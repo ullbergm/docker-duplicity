@@ -3,6 +3,7 @@ FROM alpine:3.12
 ENV HOME=/home/duplicity
 
 RUN set -x \
+ && echo "http://mirror.math.princeton.edu/pub/alpinelinux/edge/testing/" >> /etc/apk/repositories \
  && apk add --no-cache \
         ca-certificates \
         gettext \
@@ -17,6 +18,7 @@ RUN set -x \
         python3 \
         py3-six \
         rsync \
+        par2cmdline \
  && update-ca-certificates
 
 COPY Pipfile Pipfile.lock /
